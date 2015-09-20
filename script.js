@@ -100,10 +100,7 @@ function initTypeAhead() {
 	var substringMatcher = function(strs) {
 		return function findMatches(q, cb) {
 			var matches, substringRegex;
-
-			// an array that will be populated with substring matches
 			matches = [];
-
 			// regex used to determine if a string contains the substring `q`
 			substrRegex = new RegExp(q, 'i');
 
@@ -119,14 +116,7 @@ function initTypeAhead() {
 		};
 	};
 
-	var states = [
-		'/code',
-		'/code/wd/',
-		'/code/wd/mapery/nodev2',
-		'/var/www/html',
-		'/var/www/html/cawery',
-		'/home/mukesh',
-	];
+	var quickJumpList = [ ];
 
 	var typeahead_elem = $('#the-basics .typeahead');
 	typeahead_elem.typeahead({
@@ -135,8 +125,8 @@ function initTypeAhead() {
 		autoselect: true,
 		minLength: 0
 	}, {
-		name: 'states',
-		source: substringMatcher(states)
+		name: 'quickJumpList',
+		source: substringMatcher(quickJumpList)
 	});
 
 
