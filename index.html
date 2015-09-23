@@ -7,6 +7,7 @@
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <link href="css/dragula.css" rel="stylesheet">
+    <link href="css/prettify.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
     <script type="text/javascript" src="js/typeahead.bundle.js"></script>
     <script type="text/javascript" src="js/jquery.scrollinview.js"></script>
@@ -22,6 +23,7 @@
                 <li class="active">
                     <a href="#" nw-path="~/"><i class="icon-white icon-home"></i> Home</a>
                 </li>
+                <li><a href="#" nw-call="about" onclick="App.about()"><i class="icon-flag"></i> About</a></li>
                 <li class="divider"></li>
                 <li class="nav-header">Quick jump</li>
                 <li>
@@ -33,7 +35,9 @@
                 <li class="nav-header">Network</li>
                 <li class="divider"></li>
                 <li class="nav-header">Action Box</li>
-                <li> <div id='taskstack' class='container' style="width: 100%; min-height:30px;"> </div> </li>
+                <li>
+                    <div id='taskstack' class='container' style="width: 100%; min-height:30px;"> </div>
+                </li>
             </ul>
         </div>
 
@@ -41,14 +45,31 @@
             <div class="row">
                 <ul id="addressbar" class="breadcrumb"></ul>
             </div>
-            <div class="row" id = "files_container" style="background: #FFF; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">
-                <ul style="margin: 5px;" id="files"></ul>
+            <div class="row" id="files_container" style="background: #FFF; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">
+                <table style="width: 100%" class="table header-fixed">
+                    <thead style="text-align:left;">
+                        <th>Name</th>
+                        <th>Type</th>
+                    </thead>
+                    <tbody id="files"> </tbody>
+                </table>
+            </div>
+
+            <div id="context_menu">
+                <ul id="context_dropdown" class="dropdown-menu" role="menu">
+                    <li><a href="#" tabindex="-1">Open</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" tabindex="-1">Cut</a></li>
+                    <li><a href="#" tabindex="-1">Copy</a></li>
+                    <!-- <li><a href="#" tabindex="-1">Delete</a></li> -->
+                    <li><a href="#" tabindex="-1">Delete (Skip Trash)</a></li>
+                    <!-- <li><a href="#" tabindex="-1">Shread</a></li> -->
+                    <li class="divider"></li>
+                    <!-- <li><a href="#" tabindex="-1">Properties</a></li> -->
+                </ul>
             </div>
         </div>
     </div>
 </body>
-<script type="text/javascript" charset="utf-8">
-	dragula({containers:[document.getElementById('taskstack'), document.getElementById('files')],copy:true});
-</script>
 
 </html>

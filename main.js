@@ -1,4 +1,5 @@
 var app = require('app'); // Module to control application life.
+var path = require('path'); // Module to control application life.
 var BrowserWindow = require('browser-window'); // Module to create native browser window.
 
 // Report crashes to our server.
@@ -20,7 +21,8 @@ app.on('ready', function() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		width: 800,
-		height: 600
+		height: 600,
+		icon: path.join(__dirname, 'icons/filemanager.png')
 	});
 
 	// and load the index.html of the app.

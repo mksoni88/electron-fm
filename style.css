@@ -13,11 +13,11 @@ body {
 
 .file {
     padding: 2px;
-    margin: 2px;
-    /* width: 80px; */
-    /* display: inline-block; */
+    margin: 1px;
+    width: 100%;
     text-align: left;
-    vertical-align: top;}
+    vertical-align: top;
+}
 
 .file.focus {
     background-color: #08C;
@@ -28,10 +28,10 @@ body {
     /* width: 80px; */
     /* word-wrap: break-word; */
     display: inline-block;
-	cursor: default;
+    cursor: default;
 }
 
-.file.focus .name {
+.file.focus .detail {
     color: white;
 }
 
@@ -40,6 +40,12 @@ body {
     margin-top: 0;
     width: 20px;
     display: inline-block;
+}
+
+.file {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .file.focus .icon {
