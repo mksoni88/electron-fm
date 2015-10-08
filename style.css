@@ -3,7 +3,8 @@
 }
 
 body {
-    background-image: url('images/htmlbg.png')
+    background-image: url('images/htmlbg.png');
+    overflow: hidden;
 }
 
 .files {
@@ -67,19 +68,17 @@ body {
 }
 
 .tt-menu {
-    // used to be tt-dropdown-menu in older versions
+    /* used to be tt-dropdown-menu in older versions */
     width: 422px;
     margin-top: 4px;
     padding: 4px 0;
     background-color: #fff;
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
     border-radius: 4px;
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    border-radius: 4px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+	width:500px;
 }
 
 .tt-suggestion {
@@ -96,4 +95,10 @@ body {
 
 .tt-suggestion p {
     margin: 0;
+}
+
+
+/* capitalize */
+.cap{
+	text-transform: capitalize;
 }

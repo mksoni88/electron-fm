@@ -45,7 +45,7 @@
             <div class="row">
                 <ul id="addressbar" class="breadcrumb"></ul>
             </div>
-            <div class="row" id="files_container" style="background: #FFF; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">
+            <div class="row" id="files_container" style="background: #efefef; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">
                 <table style="width: 100%" class="table header-fixed">
                     <thead style="text-align:left;">
                         <th>Name</th>
@@ -57,15 +57,11 @@
 
             <div id="context_menu">
                 <ul id="context_dropdown" class="dropdown-menu" role="menu">
-                    <li><a href="#" tabindex="-1">Open</a></li>
+                    <li><a href="#" tabindex="-1" class="context-action" data-action="open">Open</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" tabindex="-1">Cut</a></li>
-                    <li><a href="#" tabindex="-1">Copy</a></li>
-                    <!-- <li><a href="#" tabindex="-1">Delete</a></li> -->
-                    <li><a href="#" tabindex="-1">Delete (Skip Trash)</a></li>
-                    <!-- <li><a href="#" tabindex="-1">Shread</a></li> -->
-                    <li class="divider"></li>
-                    <!-- <li><a href="#" tabindex="-1">Properties</a></li> -->
+                    <li><a href="#" tabindex="-1" class="context-action" data-action="cut">Cut</a></li>
+                    <li><a href="#" tabindex="-1" class="context-action" data-action="copy">Copy</a></li>
+                    <li><a href="#" tabindex="-1" class="context-action" data-action="delete">Delete (Skip Trash)</a></li>
                 </ul>
             </div>
         </div>

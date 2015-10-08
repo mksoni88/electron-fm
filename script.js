@@ -1,6 +1,7 @@
 global.$ = $;
-
 global.quickJumpList = [];
+global.currentFocus = null;
+
 var remote = require('remote');
 var Menu = remote.require('menu');
 var BrowserWindow = remote.require('browser-window');
@@ -78,9 +79,19 @@ var App = {
 	}
 };
 
+var preventDrop = function() {
+	document.addEventListener('drop', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+	});
+	document.addEventListener('dragover', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+	});
+};
 $(document).ready(function() {
 	initMenu();
-
+	preventDrop();
 	var folder = new folder_view.Folder($('#files'));
 	var addressbar = new abar.AddressBar($('#addressbar'));
 
@@ -114,6 +125,7 @@ $(document).ready(function() {
 	});
 	initTypeAhead();
 
+
 	$('body').on('keydown', function(e) {
 		if (e.ctrlKey) {
 			switch (e.which) {
@@ -131,8 +143,7 @@ $(document).ready(function() {
 			}
 		}
 
-		// make sure that tt menu is not active FIXME
-		var current = $(this).find('.focus');
+		var current = $('#files').find('.focus');
 		var file_path = current.attr('data-path');
 
 		var newelem = [];
@@ -146,10 +157,20 @@ $(document).ready(function() {
 
 		if (newelem.length > 0) {
 			e.preventDefault();
-			newelem.addClass('focus');
-			current.removeClass('focus');
-			newelem.scrollintoview();
+			if (currentFocus === null || currentFocus === 'files') {
+
+				newelem.addClass('focus');
+				current.removeClass('focus');
+				newelem.scrollintoview();
+			}
 		}
+		// TODO add keyboard navigation in context menu.
+	});
+
+
+	$('#context_dropdown .context-action').on('click', function(e) {
+		console.log($(this).attr('data-action'));
+
 	});
 
 	attachDragger();
@@ -191,15 +212,15 @@ function initTypeAhead() {
 		source: substringMatcher(quickJumpList),
 
 		templates: {
-			empty: [
-				'<div class="empty-message">',
-				'unable to find any matches',
-				'</div>'
-			].join('\n'),
+			// empty: [
+			// 	'<div class="empty-message">',
+			// 	'unable to find any matches',
+			// 	'</div>'
+			// ].join('\n'),
 
 			suggestion: function(data) {
 				var jsonpath = path.parse(data);
-				return '<div style="border-bottom:solid 1px #AAA;"><strong> ' + jsonpath.base + '</strong><br><span class="small">' + path.join(jsonpath.dir,jsonpath.base)+ '</span>  </div>';
+				return '<div style="border-bottom:solid 1px #AAA;"><strong> ' + jsonpath.base + '</strong><br><span class="small">' + path.join(jsonpath.dir, jsonpath.base) + '</span>  </div>';
 			}
 		},
 
